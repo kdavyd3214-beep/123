@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ООО «МЕДТРАНС» — медицинские услуги в Кудымкаре</title>
+<meta name="description" content="ООО «МЕДТРАНС» — деятельность в области медицины. г. Кудымкар, ул. Герцена, д. 25. ОГРН 1185958019675, ИНН 5981007317.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary: #0a6e8a;
+    --primary-dark: #064d61;
+    --accent: #4fc3d9;
+    --text: #1e2a33;
+    --muted: #5c6b75;
+    --bg: #f7fafc;
+    --white: #ffffff;
+    --border: #e2eaee;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+  }
+
+  .logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 500;
+    transition: color .2s;
+  }
+
+  .nav-links a:hover { color: var(--primary); }
+
+  .btn-phone {
+    padding: 10px 20px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background .2s;
+  }
+
+  .btn-phone:hover { background: var(--primary-dark); }
+
+  /* ===== HERO ===== */
+  .hero {
+    margin-top: 72px;
+    padding: 100px 0 80px;
+    background: linear-gradient(135deg, #e8f4f8 0%, #f7fafc 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(79,195,217,0.15), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .hero .subtitle {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    position: relative;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .btn {
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all .2s;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(10,110,138,0.25);
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(10,110,138,0.35);
+  }
+
+  .btn-outline {
+    background: #fff;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 80px 0; }
+
+  .section-title {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+    color: var(--primary-dark);
+  }
+
+  .section-sub {
+    text-align: center;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 56px;
+    font-size: 17px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .about-text p {
+    margin-bottom: 16px;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .about-text strong { color: var(--text); }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .stat-card {
+    background: #fff;
+    padding: 28px 24px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(10,110,138,0.1);
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  /* ===== ACTIVITY ===== */
+  .activity-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 48px;
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(10,110,138,0.06);
+  }
+
+  .activity-icon {
+    flex-shrink: 0;
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+  }
+
+  .activity-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+  }
+
+  .activity-card p {
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .okved {
+    display: inline-block;
+    background: #e8f4f8;
+    color: var(--primary-dark);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: monospace;
+    margin-top: 8px;
+  }
+
+  /* ===== REQUISITES ===== */
+  .requisites {
+    background: #fff;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .req-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .req-item {
+    padding: 24px;
+    border-radius: 12px;
+    background: var(--bg);
+    border-left: 4px solid var(--primary);
+  }
+
+  .req-item .label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .req-item .value {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    word-break: break-word;
+  }
+
+  /* ===== FINANCE ===== */
+  .finance-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(10,110,138,0.08);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .finance-table th,
+  .finance-table td {
+    padding: 18px 24px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .finance-table th {
+    background: var(--primary-dark);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .finance-table td:last-child {
+    text-align: right;
+    font-weight: 700;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .finance-table tr:last-child td { border-bottom: none; }
+
+  .finance-table tr:nth-child(even) td { background: #fafcfd; }
+
+  /* ===== CONTACTS ===== */
+  .contacts-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .contact-block {
+    background: #fff;
+    padding: 40px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+  }
+
+  .contact-block h3 {
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: var(--primary-dark);
+  }
+
+  .contact-line {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .contact-line .ico {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-line .txt {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  .contact-line .txt strong {
+    display: block;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .map-placeholder {
+    background: linear-gradient(135deg, #d4eef5, #e8f4f8);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+    color: var(--primary-dark);
+    font-weight: 600;
+    border: 1px solid var(--border);
+    text-align: center;
+    padding: 24px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--primary-dark);
+    color: rgba(255,255,255,0.75);
+    padding: 40px 0 24px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  footer .footer-logo {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  footer .footer-logo span { color: var(--accent); }
+
+  footer .footer-links {
+    margin: 20px 0;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  footer .footer-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color .2s;
+  }
+
+  footer .footer-links a:hover { color: #fff; }
+
+  footer .copyright {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    .about-grid,
+    .contacts-wrap {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .activity-card { flex-direction: column; padding: 32px; }
+  }
+
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    section { padding: 56px 0; }
+    .hero { padding: 60px 0 48px; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 420px) {
+    .about-stats { grid-template-columns: 1fr; }
+    .btn { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav">
+    <div class="logo">МЕД<span>ТРАНС</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">О компании</a></li>
+      <li><a href="#activity">Деятельность</a></li>
+      <li><a href="#finance">Показатели</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <a href="#contacts" class="btn-phone">Связаться</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>ООО «МЕДТРАНС»</h1>
+    <p class="subtitle">
+      Деятельность в области медицины прочая. Работаем с 2018 года
+      в городе Кудымкар Пермского края.
+    </p>
+    <div class="hero-buttons">
+      <a href="#activity" class="btn btn-primary">Наши услуги</a>
+      <a href="#contacts" class="btn btn-outline">Контакты</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">О компании</h2>
+    <p class="section-sub">
+      Стабильная организация с официальной регистрацией и прозрачной отчётностью
+    </p>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          <strong>ООО «МЕДТРАНС»</strong> зарегистрировано 9 июня 2018 года
+          по адресу: Пермский край, г. Кудымкар, ул. Герцена, д. 25.
+        </p>
+        <p>
+          Основной вид деятельности — <strong>деятельность в области медицины
+          прочая</strong>, не включённая в другие группировки (ОКВЭД 86.90.9).
+        </p>
+        <p>
+          Компанию возглавляет директор <strong>Давыдова Анна Аркадьевна</strong>,
+          она же является единственным учредителем.
+        </p>
+        <p>
+          Среднесписочная численность работников — <strong>5 человек</strong>.
+          Уставный капитал — <strong>10 000 ₽</strong>.
+        </p>
+      </div>
+
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-value">2018</span>
+          <span class="stat-label">Год основания</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">5</span>
+          <span class="stat-label">Сотрудников</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">4.48 млн ₽</span>
+          <span class="stat-label">Выручка 2025</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">2.69 млн ₽</span>
+          <span class="stat-label">Прибыль 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITY -->
+<section id="activity" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Направление деятельности</h2>
+    <p class="section-sub">Чем занимается наша организация</p>
+
+    <div class="activity-card">
+      <div class="activity-icon">🩺</div>
+      <div>
+        <h3>Медицинская деятельность</h3>
+        <p>
+          Прочая деятельность в области медицины, не включённая в другие
+          группировки. Организация оказывает медицинские услуги
+          в соответствии с действующим законодательством РФ.
+        </p>
+        <p style="font-size:14px;">
+          Основной ОКВЭД — единственное направление деятельности компании.
+        </p>
+        <span class="okved">ОКВЭД 86.90.9</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUISITES -->
+<section class="requisites">
+  <div class="container">
+    <h2 class="section-title">Реквизиты</h2>
+    <p class="section-sub">Официальные данные из ЕГРЮЛ</p>
+
+    <div class="req-grid">
+      <div class="req-item">
+        <div class="label">Полное наименование</div>
+        <div class="value">ООО «МЕДТРАНС»</div>
+      </div>
+      <div class="req-item">
+        <div class="label">ОГРН</div>
+        <div class="value">1185958019675</div>
+      </div>
+      <div class="req-item">
+        <div class="label">ИНН</div>
+        <div class="value">5981007317</div>
+      </div>
+      <div class="req-item">
+        <div class="label">КПП</div>
+        <div class="value">598101001</div>
+      </div>
+      <div class="req-item">
+        <div class="label">Дата регистрации</div>
+        <div class="value">09.06.2018</div>
+      </div>
+      <div class="req-item">
+        <div class="label">Юридический адрес</div>
+        <div class="value">Пермский край, г. Кудымкар, ул. Герцена, д. 25</div>
+      </div>
+      <div class="req-item">
+        <div class="label">Директор</div>
+        <div class="value">Давыдова Анна Аркадьевна</div>
+      </div>
+      <div class="req-item">
+        <div class="label">Уставный капитал</div>
+        <div class="value">10 000 ₽</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCE -->
+<section id="finance">
+  <div class="container">
+    <h2 class="section-title">Финансовые показатели</h2>
+    <p class="section-sub">Результаты деятельности за 2025 год</p>
+
+    <table class="finance-table">
+      <thead>
+        <tr>
+          <th>Показатель</th>
+          <th>Сумма</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Выручка</td>
+          <td>4 481 000 ₽</td>
+        </tr>
+        <tr>
+          <td>Себестоимость продаж</td>
+          <td>1 792 000 ₽</td>
+        </tr>
+        <tr>
+          <td>Валовая прибыль</td>
+          <td>2 689 000 ₽</td>
+        </tr>
+        <tr>
+          <td>Прибыль компании</td>
+          <td>2 689 000 ₽</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:24px;">
+      Выручка на начало 2025 года — 4 168 000 ₽, на конец — 4 481 000 ₽
+    </p>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" style="background:#fff;border-top:1px solid var(--border);">
+  <div class="container">
+    <h2 class="section-title">Контакты</h2>
+    <p class="section-sub">Свяжитесь с нами удобным способом</p>
+
+    <div class="contacts-wrap">
+      <div class="contact-block">
+        <h3>ООО «МЕДТРАНС»</h3>
+
+        <div class="contact-line">
+          <div class="ico">📍</div>
+          <div class="txt">
+            <strong>Адрес</strong>
+            618900, Пермский край, г. Кудымкар,<br>ул. Герцена, д. 25
+          </div>
+        </div>
+
+        <div class="contact-line">
+          <div class="ico">👤</div>
+          <div class="txt">
+            <strong>Директор</strong>
+            Давыдова Анна Аркадьевна
+          </div>
+        </div>
+
+        <div class="contact-line">
+          <div class="ico">🏢</div>
+          <div class="txt">
+            <strong>ИНН / КПП</strong>
+            5981007317 / 598101001
+          </div>
+        </div>
+
+        <div class="contact-line">
+          <div class="ico">📋</div>
+          <div class="txt">
+            <strong>ОГРН</strong>
+            1185958019675
+          </div>
+        </div>
+
+        <div class="contact-line">
+          <div class="ico">🕐</div>
+          <div class="txt">
+            <strong>Режим работы</strong>
+            Пн–Пт: 9:00 – 18:00
+          </div>
+        </div>
+      </div>
+
+      <div class="map-placeholder">
+        <div>
+          <div style="font-size:48px;margin-bottom:12px;">🗺️</div>
+          <div>г. Кудымкар, ул. Герцена, д. 25</div>
+          <div style="font-size:13px;font-weight:400;margin-top:8px;opacity:0.7;">
+            Здесь можно разместить карту<br>(Яндекс.Карты или Google Maps)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">МЕД<span>ТРАНС</span></div>
+    <div>Медицинская деятельность в Кудымкаре с 2018 года</div>
+
+    <div class="footer-links">
+      <a href="#about">О компании</a>
+      <a href="#activity">Деятельность</a>
+      <a href="#finance">Показатели</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+
+    <div class="copyright">
+      © 2018–2026 ООО «МЕДТРАНС». ОГРН 1185958019675 · ИНН 5981007317<br>
+      Все права защищены.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
